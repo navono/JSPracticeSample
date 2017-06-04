@@ -3,7 +3,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-02 20:59:16
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-03 14:26:42
+ * @Last Modified time: 2017-06-03 20:51:17
  * @ Ctrl + Alt + i
  */
 
@@ -14,7 +14,7 @@
  */
 function getUserName (local) {
     if (local === true) {
-        return 'Pint';
+        return 'Ping';
     }
     return 'Qixing';
 }
@@ -29,5 +29,5 @@ function getUserName (local) {
  *
  */
 const a = '1';
-// a = 3;
 console.log(a);
+console.log(getUserName(true));
