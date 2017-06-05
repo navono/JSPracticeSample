@@ -3,7 +3,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-02 20:59:16
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-04 15:37:06
+ * @Last Modified time: 2017-06-05 08:34:41
  * @ Ctrl + Alt + i
  */
 
@@ -12,6 +12,7 @@
  *
  * @returns
  */
+
 function getUserName (local) {
     if (local === true) {
         return 'Ping';
@@ -20,10 +21,14 @@ function getUserName (local) {
 }
 
 /**
+ * 从Github上同步VSCode的环境设置：
+ *
  * 首先得安装Settings Sync
  * Shift + Alt + u 上传VSCode的配置信息到Github
  * Shift + Alt + d 下载VSCode的配置
- *
+ */
+
+/**
  * Ctrl + K + 0 收起代码块
  * Ctrl + K + j 展开代码块
  *
