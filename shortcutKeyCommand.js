@@ -3,7 +3,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-02 20:59:16
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-05 08:36:58
+ * @Last Modified time: 2017-06-05 10:57:20
  *
  * Ctrl + Alt + i
  */
@@ -34,3 +34,5 @@ function getUserName (local) {
  * Ctrl + K + j 展开代码块
  *
  */
+
+console.log('test');
