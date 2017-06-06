@@ -90,4 +90,3 @@ function Child4 (name, age) {
 // Child4.prototype = new F();
 
 prototype(Child4, Parent4);
-
