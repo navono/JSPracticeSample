@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>requirejs</title>
+        <!--<script type="text/javascript" src="./requirejs.js"></script>-->
+
+        <!--防止js加载阻塞页面渲染
+            防止在html出现多个script行-->
+        <script type="text/javascript" src="./lib/require.js"></script>
+
+        <!--require(["./requireDemo"])
+        第二个参数是callback，用来处理加载完毕后的逻辑-->
+        <script type="text/javascript">
+            // 加载本地js文件
+            // 加载的js文件不需要后缀，也不能写后缀
+            // require(["requireDemo"], function () {
+            //     alert('load finished');
+            // });
+
+            // 或者如下配置
+            // require.config({
+            //     paths: {
+            //         "demo": "./requireDemo"
+            //     }
+            // })
+            // require(["demo"], function() {
+            //     alert('load finished');
+            // })
+
+            // 上述加载都是加载本地文件，如果js来自服务器，其他网站或者CDN，则需要使用config来配置加载位置
+            // require.config({
+            //     paths: {
+            //         "jquery": ["http://libs.baidu.com/jquery/2.0.3/jquery"],
+            //         "demo": "./requireDemo"
+            //     }
+            // })
+            // // $代表的是jQuery模块的输出变量，依赖多个模块，可依次写多个参数来使用
+            // require(["jquery", "demo"], function($) {
+            //     $(function () {
+            //         alert('load finished');
+            //     })
+            // })
+        </script>
+
+        <!--可将require.config放入“主数据(requireMain.js)”文件
+            加载完require.js后，加载data-main指定的js文件，这样每个页面就可以使用require来加载所有模块的短模块名
+            data-main还有一个功能，就是会将data-main指定的js为根路径。
+            比如下面写法，使用require模块后会自动从.目录下加载require的模块。
+            类似就是在config中加入：baseUrl: './'。
+            
+            require加载的模块都是符合AMD规范即使用define来声明的模块，
+            非AMD规范的js需要使用shim（垫片）。
+            比如我们要使用一个叫着A的类库，但是A类库没有实现AMD规范，我们可以这样配置
+            require.config({
+                shim: {
+                    'non-AMD-A': {
+                        exports: '_';
+                    }
+                }
+            })
+
+            配置后，可以在页面中这样使用：
+            require(["non-AMD-A"], function (_) {
+                _.each([1, 2, 3], alert);
+            })
+
+            插件形式的非AMD模块，比如jQuery的jquery.form插件，此时我们就需要这样做：
+            require.config({
+                shim: {
+                    'underscore': {
+                        exports: '-';
+                    },
+                    'jquery.form':{
+                        deps: ['jquery']
+                    }
+
+                    //或者
+                    //'jquery.form': ['jquery']
+                }
+            })
+
+            配置后，可以在页面中这样使用：
+            require(['jquery', 'jquery.form'], functions ($) {
+                $(function () {
+                    $("#form").ajaxSubmit({...});
+                })
+            })
+
+            -->
+        <script data-main="./requireMain" src="./lib/require.js"></script>
+        
+    </head>
+    <body>
+        <span>body</span>
+    </body>
+</html>
