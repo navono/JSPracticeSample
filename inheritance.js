@@ -1,3 +1,10 @@
+/*
+ * @Author: Ping Qixing
+ * @Date: 2017-06-07 08:11:51
+ * @Last Modified by:   Ping Qixing
+ * @Last Modified time: 2017-06-07 08:11:51
+ */
+
 // 原型链继承。缺点：引用类型的属性被所有实例共享
 function Parent () {
     this.name = 'Ping';
