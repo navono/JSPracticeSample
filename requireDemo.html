@@ -93,7 +93,7 @@
             -->
         <script type="text/javascript" data-main="requireMain" src="lib/require.js"></script>
         
-        <!--无法向下面这么使用，原因未知。猜测是data-main加载和下面的脚本加载不是顺序的，导致下面的require失败
+        <!--data-main是异步加载，和下面的脚本加载不是顺序的，导致下面的require失败
             但是在requireMain中可以使用短模块名 
             -->
         <!--<script>

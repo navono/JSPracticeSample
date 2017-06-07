@@ -2,13 +2,13 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-07 10:36:17
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-07 13:31:54
+ * @Last Modified time: 2017-06-07 14:12:27
  */
 require.config({
     baseUrl: '.',
     paths: {
         // 'jquery': ['http://libs.baidu.com/jquery/2.0.3/jquery'],
-        'demo': './requireDemo'
+        'demo': './requireModule'
     }
     // 非AMD模块，导出多个变量
     // , shim: {
