@@ -54,14 +54,14 @@
             require.config({
                 shim: {
                     'non-AMD-A': {
-                        exports: '_';
+                        exports: 'A';
                     }
                 }
             })
 
             配置后，可以在页面中这样使用：
-            require(["non-AMD-A"], function (_) {
-                _.each([1, 2, 3], alert);
+            require(["non-AMD-A"], function (A) {
+                A.each([1, 2, 3], alert);
             })
 
             插件形式的非AMD模块，比如jQuery的jquery.form插件，此时我们就需要这样做：
