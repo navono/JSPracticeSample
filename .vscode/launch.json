@@ -5,6 +5,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
+            "sourceMaps": true,
             // "url": "http://localhost:8080",
             // "file": "${workspaceRoot}/index.html",
             "file": "${workspaceRoot}/requireDemo.html",
@@ -15,6 +16,7 @@
             "request": "attach",
             "name": "Attach to Chrome",
             "port": 9222,
+            "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
         }
     ]

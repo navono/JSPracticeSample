@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-07 10:06:41
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-07 10:24:02
+ * @Last Modified time: 2017-06-07 13:15:34
  */
 
 // Normal
@@ -29,9 +29,16 @@
 // require用来加载依赖模块，在页面中使用
 define(function () {
     'use strict';
-    function func1 () {
-        alert('it works');
-    }
+    // function func1 () {
+    //     alert('it works');
+    // }
 
-    func1();
-})
+    // func1();
+    // 或者
+
+    return {
+        hello: function () {
+            alert('it works');
+        }
+    }
+});
