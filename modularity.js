@@ -1,8 +1,8 @@
 /*
  * @Author: Ping Qixing
  * @Date: 2017-06-04 15:39:08
- * @Last Modified by:   Ping Qixing
- * @Last Modified time: 2017-06-04 15:39:08
+ * @Last Modified by: Ping Qixing
+ * @Last Modified time: 2017-06-07 08:52:44
  */
 
 'use strict';
@@ -31,7 +31,8 @@ let MODULE = (function () {
 console.log(MODULE.moduleProperty);
 MODULE.moduleMethod();
 
-// 放大模式
+// 放大模式(augmentation)
+// 在传入的模块基础上，增加额外的属性或者方法
 var MODULE2 = (function (mod) {
     mod.anotherMethod = function () {
         console.log('another method');
@@ -42,7 +43,8 @@ var MODULE2 = (function (mod) {
 
 MODULE2.anotherMethod();
 
-// 宽放大模式
+// 宽放大模式(Loose augmentation)
+// 防止加载空对象
 let MODULE3 = (function (mod) {
     mod.thirdMethod = function () {
         console.log('third method');

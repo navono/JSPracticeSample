@@ -5,6 +5,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
+            "sourceMaps": true,
             // "url": "http://localhost:8080",
             "file": "${workspaceRoot}/reactDemo.html",
             "webRoot": "${workspaceRoot}"
@@ -14,6 +15,7 @@
             "request": "attach",
             "name": "Attach to Chrome",
             "port": 9222,
+            "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
         }
     ]
