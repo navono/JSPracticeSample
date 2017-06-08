@@ -3,7 +3,8 @@ module.exports = {
     "plugins": [
         "standard",
         "promise",
-        "html"
+        "html",
+        "react"
     ],
     "env": {
     "browser": true,
