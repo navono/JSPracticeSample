@@ -7,7 +7,7 @@
             "name": "Launch Chrome against localhost",
             "sourceMaps": true,
             // "url": "http://localhost:8080",
-            "file": "${workspaceRoot}/reactDemo.html",
+            "file": "${workspaceRoot}/index.html",
             "webRoot": "${workspaceRoot}"
         },
         {
