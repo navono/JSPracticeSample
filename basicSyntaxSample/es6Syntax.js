@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-11 20:56:29
+ * @Last Modified time: 2017-06-11 21:23:38
  */
 
 // Arrow function and template string
@@ -199,29 +199,60 @@ var promise = new Promise(function (resolve, reject) {
     }
 });
 
-promise.then(
-    value => {
-        console.log(value);
-    }, err => {
-    console.log(err);
-}).catch(err => {
-    console.log(err);
-})
+// promise.then(
+//     value => {
+//         console.log(value);
+//     }, err => {
+//     console.log(err);
+// }).catch(err => {
+//     console.log(err);
+// })
 
 const getFakeMembers = count => new Promise((resolve, reject) => {
     const api = `http://api.randomuser.me/?nat=US&results=${count}`;
     const request = new XMLHttpRequest();
     request.open('GET', api);
     request.onload = () =>
-        (request.status === 200) ? 
-        resolve(JSON.parse(request.response).results) : 
-        reject(Error(request.statusText));
+        (request.status === 200)
+        ? resolve(JSON.parse(request.response).results)
+        : reject(Error(request.statusText));
 
     request.onerror = (err) => reject(err);
     request.send();
 })
 
-getFakeMembers(10).then(
-    members => console.log(members),
-    err => console.log(new Error(err))
-);
+// getFakeMembers(10).then(
+//     members => console.log(members),
+//     err => console.log(new Error(err))
+// );
+
+// Class
+class Vacation {
+    constructor (destination, length) {
+        this.destination = destination;
+        this.length = length;
+    }
+
+    print () {
+        console.log(`${this.destination} will take ${this.length} days.`);
+    }
+}
+
+// const trip = new Vacation('Santiago, Chile', 7);
+// trip.print();
+
+class Expedition extends Vacation {
+    constructor (destination, length, gear) {
+        super(destination, length);
+        this.gear = gear;
+    }
+
+    print () {
+        super.print();
+        console.log(`bring yours ${this.gear.join(' and your ')}`);
+    }
+}
+
+const trip = new Expedition('Mt. Whitney', 3, ['sunglasses', 'prayer flags', 'camera']);
+trip.print();
+console.log(Vacation.prototype);
