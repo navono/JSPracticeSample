@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-11 21:23:38
+ * @Last Modified time: 2017-06-14 21:18:39
  */
 
 // Arrow function and template string
@@ -256,3 +256,52 @@ class Expedition extends Vacation {
 const trip = new Expedition('Mt. Whitney', 3, ['sunglasses', 'prayer flags', 'camera']);
 trip.print();
 console.log(Vacation.prototype);
+
+// immutable
+let colorLawn = {
+    title: 'lawn',
+    color: '#0F0',
+    rating: 0
+}
+let rateColor = function (color, rating) {
+    return Object.assign({}, color, {rating: rating});
+    // 类似的还有Array.concat()
+    // 和 [...list, {xxx}]
+}
+
+// ES7
+// let rateColor2 = (color, rating) => ({
+//     ...color,
+//     rating
+// })
+
+// console.log(rateColor(colorLawn, 4).rating);
+// console.log(colorLawn.rating);
+
+let frederick = {
+    name: 'Frederick Douglass',
+    canRead: false,
+    canWrite: false
+}
+
+// impure
+function selfEducate () {
+    frederick.canRead = true
+    frederick.canWrite = true
+    return frederick
+}
+// selfEducate()
+// console.log(frederick);
+
+const pureSelfEducate = person => {
+    return Object.assign({}, person, {canRead: true, canWrite: true});
+}
+// ES7
+// const pureSelfEducate = person => ({
+//     ...person,
+//     canRead: true,
+//     canWrite: true
+// })
+
+console.log(pureSelfEducate(frederick));
+console.log(frederick);
