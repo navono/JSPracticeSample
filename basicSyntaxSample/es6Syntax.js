@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-17 15:10:49
+ * @Last Modified time: 2017-06-17 15:25:18
  */
 
 // Arrow function and template string
@@ -330,10 +330,10 @@ const plus1 = a => a + 1;
 const mult2 = a => a * 2;
 const addThenMult = pipeline(plus1, mult2);
 
-addThenMult(5)
+// addThenMult(5)
 
 // equal
-mult2(plus1(5))
+// mult2(plus1(5))
 
 // 绑定this
 // let log = ::console.log;
@@ -366,14 +366,14 @@ function factorial (n) {
     return n * factorial(n - 1);
 }
 
-factorial(5) // 120
+// factorial(5) // 120
 
 function factorialTail (n, total) {
     if (n === 1) return total;
     return factorialTail(n - 1, n * total);
 }
 
-factorial(5, 1) // 120
+// factorial(5, 1) // 120
 
 // 尾递归的实现，往往需要改写递归函数，确保最后一步只调用自身。
 // 做到这一点的方法，就是把所有用到的内部变量改写成函数的参数。
@@ -405,7 +405,7 @@ function tailFactorial2 (n, total) {
 
 const factorial3 = currying(tailFactorial2, 1);
 
-factorial3(5) // 120
+// factorial3(5) // 120
 
 // 第二种方法就简单多了，就是采用 ES6 的函数默认值。
 function factorial4 (n, total = 1) {
@@ -413,6 +413,67 @@ function factorial4 (n, total = 1) {
     return factorial(n - 1, n * total);
 }
 
-factorial4(5) // 120
+// factorial4(5) // 120
 
 // ES6 的尾调用优化只在严格模式下开启，正常模式是无效的。
+// 尾递归优化只在严格模式下生效，那么正常模式下，或者那些不支持该功能的环境中，有没有办法也使用尾递归优化呢？
+// 回答是可以的，就是自己实现尾递归优化。
+
+// 它的原理非常简单。尾递归之所以需要优化，原因是调用栈太多，造成溢出，那么只要减少调用栈，就不会溢出。
+// 怎么做可以减少调用栈呢？就是采用“循环”换掉“递归”。
+
+// 正常递归版
+function sum (x, y) {
+    if (y > 0) {
+        return sum(x + 1, y - 1);
+    } else {
+        return x;
+    }
+}
+
+// 蹦床版
+function trampoline (f) {
+    while (f && f instanceof Function) {
+        f = f();
+    }
+    return f;
+}
+
+function sum2 (x, y) {
+    if (y > 0) {
+        return sum2.bind(null, x + 1, y - 1);
+    } else {
+        return x;
+    }
+}
+// trampoline(sum2(1, 100000))
+// 100001
+
+// 蹦床函数并不是真正的尾递归优化，下面的实现才是。
+function tco (f) {
+    let value;
+    let active = false;
+    let accumulated = [];
+
+    return function accumulator () {
+        accumulated.push(arguments);
+        if (!active) {
+            active = true;
+            while (accumulated.length) {
+                value = f.apply(this, accumulated.shift());
+            }
+            active = false;
+            return value;
+        }
+    };
+}
+
+var sum3 = tco(function (x, y) {
+    if (y > 0) {
+        return sum3(x + 1, y - 1)
+    } else {
+        return x
+    }
+});
+
+sum3(1, 3);
