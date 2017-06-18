@@ -8,7 +8,7 @@
     // "args": ["Hello world!"],
     "showOutput": "always",
 
-    "args": ["Yo!"],
+    // "args": ["Yo!"],
     "echoCommand": true,
     "suppressTaskName": true,
     "tasks": [
@@ -29,6 +29,13 @@
                 "Good Bye"
             ],
             "suppressTaskName": false
+        }, 
+        {
+            "taskName": "zz",
+            "command": "babel",
+            "args": [
+                "../basicSyntaxSample/generator.js"
+            ]
         }
     ]
 }

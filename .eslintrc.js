@@ -7,10 +7,13 @@ module.exports = {
         "react"
     ],
     "env": {
-    "browser": true,
-    "es6": true,
-    // "commonjs": true,
-    // "jquery": true
+        "browser": true,
+        "es6": true,
+        // "commonjs": true,
+        // "jquery": true
+    },
+    "ecmaFeatures": {
+        "modules": true
     },
     "rules": {
         //关闭额外的分号检查
