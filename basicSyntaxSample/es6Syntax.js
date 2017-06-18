@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-17 15:28:10
+ * @Last Modified time: 2017-06-17 17:06:49
  */
 
 // Arrow function and template string
@@ -481,4 +481,19 @@ var sum3 = tco(function (x, y) {
     }
 });
 
-sum3(1, 3);
+// sum3(1, 3);
+
+// Proxy
+let obj = new Proxy({}, {
+    get: function (target, key, receiver) {
+        console.log(`getting ${key}!`);
+        return Reflect.get(target, key, receiver);
+    },
+    set: function (target, key, value, receiver) {
+        console.log(`setting ${key}!`);
+        return Reflect.set(target, key, value, receiver);
+    }
+});
+
+obj.count = 1;
+++obj.count;
