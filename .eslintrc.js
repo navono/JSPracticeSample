@@ -12,9 +12,9 @@ module.exports = {
         // "commonjs": true,
         // "jquery": true
     },
-    "ecmaFeatures": {
-        "modules": true
-    },
+    // "ecmaFeatures": {
+    //     "modules": true
+    // },
     "rules": {
         //关闭额外的分号检查
         //0:关闭，1:警告，2:异常
