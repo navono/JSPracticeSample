@@ -5,7 +5,8 @@
   "main": "demo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel basicSyntaxSample -d lib"
+    "build": "babel basicSyntaxSample -d lib",
+    "start": "webpack-dev-server --env=dev --inline --progress --profile --colors"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,14 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-uglify": "^3.0.0",
+    "html-webpack-plugin": "^2.29.0",
     "lodash": "^4.17.4",
+    "open-browser-webpack-plugin": "^0.0.5",
+    "ramda": "^0.24.1",
     "react": "^15.6.1",
-    "react-addons": "^0.9.1-deprecated"
+    "react-addons": "^0.9.1-deprecated",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "babel-cli": "^6.24.1",
