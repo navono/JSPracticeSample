@@ -27,7 +27,7 @@ module.exports = {
         "no-unused-vars": 1,
         "indent": [
             "error",
-            4
+            2
         ]
     }
 };
