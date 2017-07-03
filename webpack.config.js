@@ -9,7 +9,7 @@ module.exports = {
   entry: path.resolve(__dirname, './basicSyntaxSample/ramda.js'),
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../build')
+    path: path.resolve(__dirname, './build')
   },
   module: {
     rules: [
@@ -34,7 +34,7 @@ module.exports = {
     historyApiFallback: true,
     // 告诉 dev-server 在使用HMR
     hot: true,
-    contentBase: path.resolve(__dirname, '../build'),
+    contentBase: path.resolve(__dirname, './build'),
     publicPath: '/',
     port: PORT
   }
