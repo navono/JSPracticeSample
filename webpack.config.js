@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-const PORT = 8888;
+const PORT = 9999;
 
 module.exports = {
   entry: path.resolve(__dirname, './basicSyntaxSample/ramda.js'),
