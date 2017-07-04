@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-03 08:44:15
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-04 13:57:31
+ * @Last Modified time: 2017-07-04 14:33:12
  * @Description
  */
 import R from 'ramda';
@@ -126,3 +126,15 @@ console.log(r10);
 // or
 let r11 = R.into([], R.map(R.add(1)), arr);
 console.log(r11);
+
+let basket = [
+  {item: 'apples', per: 0.95, count: 3, cost: 2.85},
+  {item: 'peaches', per: 0.80, count: 2, cost: 1.60},
+  {item: 'plums', per: 0.55, count: 4, cost: 2.20}
+];
+
+let add = (a, b) => a + b;
+let priceSum = R.reduce(add, 0);
+// console.log(R.pluck('cost')(basket));
+let totalPrice = R.compose(priceSum, R.pluck('cost'));
+console.log(totalPrice(basket));
