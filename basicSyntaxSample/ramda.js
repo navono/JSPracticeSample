@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-03 08:44:15
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-04 14:33:12
+ * @Last Modified time: 2017-07-05 16:49:06
  * @Description
  */
 import R from 'ramda';
@@ -107,7 +107,7 @@ let arr2 = arr.reduce((newArr, x) => {
   return newArr;
 }, []);
 
-console.log(arr2);
+// console.log(arr2);
 
 // 而transduce就是执行`变形`和`累积`两个运算，让代码具备更高的复用性。
 
@@ -121,20 +121,76 @@ let append = (newArr, x) => {
 };
 
 let r10 = R.transduce(R.map(plusOne), append, [], arr);
-console.log(r10);
+// console.log(r10);
 
 // or
 let r11 = R.into([], R.map(R.add(1)), arr);
-console.log(r11);
+// console.log(r11);
 
 let basket = [
-  {item: 'apples', per: 0.95, count: 3, cost: 2.85},
-  {item: 'peaches', per: 0.80, count: 2, cost: 1.60},
-  {item: 'plums', per: 0.55, count: 4, cost: 2.20}
+  {item: 'apples', per: 0.95, count: 3, cost: 2.85, time: 1499231281164},
+  {item: 'peaches', per: 0.80, count: 2, cost: 1.60, time: 1499231281264},
+  {item: 'plums', per: 0.55, count: 4, cost: 2.20, time: 1499231281364}
 ];
 
 let add = (a, b) => a + b;
 let priceSum = R.reduce(add, 0);
 // console.log(R.pluck('cost')(basket));
 let totalPrice = R.compose(priceSum, R.pluck('cost'));
-console.log(totalPrice(basket));
+totalPrice(basket);
+
+function print (items) {
+  R.map(i => {
+    console.log(`${i.item} ${i.cost} ${i.time}`);
+  })(items);
+}
+
+function modify (item) {
+  if (item.time instanceof Date) {
+    return {...item};
+  } else {
+    let t = new Date(item.time);
+    return {
+      ...item,
+      time: t
+    }
+  }
+}
+
+R.pipe(
+  R.map(modify),
+  print
+)(basket);
+
+let CARS = [
+  {name: 'Ferrari FF', horsepower: 660, dollar_value: 700000, in_stock: true},
+  {name: 'Spyker C12 Zagato', horsepower: 650, dollar_value: 648000, in_stock: false},
+  {name: 'Jaguar XKR-S', horsepower: 550, dollar_value: 132000, in_stock: false},
+  {name: 'Audi R8', horsepower: 525, dollar_value: 114200, in_stock: false},
+  {name: 'Aston Martin One-77', horsepower: 750, dollar_value: 1850000, in_stock: true},
+  {name: 'Pagani Huayra', horsepower: 700, dollar_value: 1300000, in_stock: false}
+];
+
+let debugTrace = R.curry((tag, v) => {
+  console.log(tag, v);
+  return v;
+})
+
+let isLastInStock = R.compose(R.prop('in_stock'), R.last);
+// console.log(isLastInStock(CARS));
+
+let nameOfFirstCar = R.compose(R.prop('name'), R.head);
+// console.log(nameOfFirstCar(CARS));
+
+let _average = function (xs) { return R.reduce(R.add, 0, xs) / xs.length; };
+let averageDollarValue = R.compose(_average, R.pluck('dollar_value'));
+// console.log(averageDollarValue(CARS));
+
+let _underscore = R.replace(/\W+/g, '_'); // <-- 无须改动，并在 sanitizeNames 中使用它
+
+let sanitizeNames = R.compose(R.map(_underscore), R.map(R.toLower));
+// console.log(sanitizeNames(['Hello World', 'What You Want?']));
+
+let sortByHorsepower = R.sortBy(R.prop('horsepower'));
+let fasterCar = R.compose(R.last, sortByHorsepower);
+console.log(`${fasterCar(CARS).name} is the fastest`);
