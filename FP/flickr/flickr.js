@@ -32,9 +32,14 @@ require(['ramda', 'jquery'], function (R, $) {
     return 'https://api.flickr.com/services/feeds/photos_public.gne?tags=' + t + '&format=json&jsoncallback=?';
   }
 
-  var mediaUrl = R.compose(R.prop('m'), R.prop('media'));
-  var srcs = R.compose(R.map(mediaUrl), R.prop('items'));
-  var images = R.compose(R.map(img), srcs);
+  var mediaUrl = R.compose(trace('m'), R.prop('m'), R.prop('media'));
+
+  // var srcs = R.compose(R.map(mediaUrl), R.prop('items'));
+  // var images = R.compose(R.map(img), R.map(mediaUrl), R.prop('items'));
+
+  let mediaToImg = R.compose(img, mediaUrl);
+  var images = R.compose(R.map(mediaToImg), R.prop('items'));
+
   var renderImages = R.compose(Impure.setHtml('body'), images);
   var app = R.compose(Impure.getJSON(renderImages), url);
 
