@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-03 08:44:15
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-05 16:49:06
+ * @Last Modified time: 2017-07-08 10:39:11
  * @Description
  */
 import R from 'ramda';
@@ -194,3 +194,18 @@ let sanitizeNames = R.compose(R.map(_underscore), R.map(R.toLower));
 let sortByHorsepower = R.sortBy(R.prop('horsepower'));
 let fasterCar = R.compose(R.last, sortByHorsepower);
 console.log(`${fasterCar(CARS).name} is the fastest`);
+
+const secret = function (msg) {
+  return function (r) {
+    return console.log(msg + ' ' + r);
+  }
+}
+
+const mySecret = secret('hi');
+mySecret('there');
+
+const secret2 = R.curry((msg, _) => {
+  console.log(msg);
+});
+const mySecret2 = secret2('You!', R._);
+console.log(mySecret2());
