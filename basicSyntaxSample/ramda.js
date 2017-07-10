@@ -2,10 +2,14 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-03 08:44:15
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-08 10:39:11
+ * @Last Modified time: 2017-07-10 15:30:21
  * @Description
  */
 import R from 'ramda';
+import {foo} from './ma';
+import {bar} from './mb';
+
+foo();
 
 let square = n => n * n;
 

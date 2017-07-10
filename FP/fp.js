@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-06 14:20:04
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-06 15:27:40
+ * @Last Modified time: 2017-07-10 08:45:01
  * @Description
  * 演示FP的一些例子。在Node下执行
  */
@@ -57,8 +57,43 @@ let map = R.curry((f, functor) => {
 });
 // map(R.prop('age'))(Maybe.of({name: 'Dinah', age: 14}))
 
-let m = Maybe.of({name: 'Boris'}).map(R.prop('age')).map(R.add(10));
-console.log(m);
+Maybe.of({name: 'Boris'}).map(R.prop('age')).map(R.add(10));
 
-let m2 = Maybe.of({name: 'Dinah', age: 14}).map(R.prop('age')).map(R.add(10));
-console.log(m2);
+Maybe.of({name: 'Dinah', age: 14}).map(R.prop('age')).map(R.add(10));
+
+let IO = function (f) {
+  this.__value = f;
+}
+
+IO.of = function (x) {
+  return new IO(_ => {
+    return x;
+  })
+}
+
+IO.prototype.map = function (f) {
+  return new IO(R.compose(f, this.__value));
+}
+
+let ioWindow = new IO(_ => window);
+ioWindow.map(win => win.innerWidth);
+
+let fs = require('fs');
+
+let readFile = function (filename) {
+  return new IO(_ => {
+    return fs.readFileSync(filename, 'utf-8');
+  });
+}
+
+let print = function (x) {
+  return new IO(_ => {
+    console.log(x);
+    return x;
+  })
+}
+
+let cat = R.compose(R.map(print), readFile);
+let catFirstChar = R.compose(R.join, R.map(R.head), cat);
+
+console.log(catFirstChar('./test.txt'));
