@@ -22,18 +22,21 @@
   },
   "homepage": "https://github.com/navono/JSPracticeSample#readme",
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "css-loader": "^0.28.4",
     "gulp": "^3.9.1",
     "gulp-uglify": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
     "lodash": "^4.17.4",
     "open-browser-webpack-plugin": "^0.0.5",
+    "postcss-loader": "^2.0.6",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-addons": "^0.9.1-deprecated",
+    "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0",
-    "babel-plugin-transform-es2015-modules-amd": "^6.24.1"
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "babel-cli": "^6.24.1",

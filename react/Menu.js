@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Recipe from './Recipes';
 
+import './style/Menu.css';
+
 // A stateless functional component for the Menu of Recipes
 const Menu = ({recipes}) => {
   console.log('Menu');

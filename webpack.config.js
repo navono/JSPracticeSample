@@ -6,6 +6,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const PORT = 9999;
 
 module.exports = {
+  devtool: 'source-map',
   entry: path.resolve(__dirname, './react/index.js'),
   output: {
     filename: '[name].js',
@@ -16,6 +17,14 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [require('autoprefixer')]
+          }}]
       }
     ]
   },
@@ -28,6 +37,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new OpenBrowserPlugin({
       url: `http:\\localhost:${PORT}`
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      warnings: false,
+      mangle: true
     })
   ],
   devServer: {
