@@ -2,9 +2,9 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 
 gulp.task('minify', function () {
-    gulp.src('./demo.js')
-     .pipe(uglify())
-     .pipe(gulp.dest('./build.js'))
+  gulp.src('./demo.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./build.js'))
 });
 
 // gulpfile.js加载gulp和gulp-uglify模块之后，使用gulp模块的task方法指定任务minify。task方法有两个参数，
@@ -16,7 +16,7 @@ gulp.task('minify', function () {
 // 执行minify任务时，就在项目目录中执行下面命令就可以了。
 
 gulp.task('greet', function () {
-    console.log('Hello, world!');
+  console.log('Hello, world!');
 })
 
 // gulp.watch('./demo.js', function (event) {
@@ -27,6 +27,6 @@ gulp.task('greet', function () {
 var watcher = gulp.watch('./demo.js', ['build']);
 
 watcher.on('change', function (event) {
-    console.log('Event type: ' + event.type);
-    console.log('Event path: ' + event.path);
+  console.log('Event type: ' + event.type);
+  console.log('Event path: ' + event.path);
 });
