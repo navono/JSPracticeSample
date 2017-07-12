@@ -6,7 +6,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const PORT = 9999;
 
 module.exports = {
-  entry: path.resolve(__dirname, './basicSyntaxSample/ramda.js'),
+  entry: path.resolve(__dirname, './react/index.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './build')
