@@ -1,22 +1,7 @@
-import React, {createClass, Component} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export const Summary = createClass({
-  displayName: 'Summary',
-  propTypes: {
-    ingredients: PropTypes.number.isRequired,
-    steps: PropTypes.number.isRequired,
-    title: PropTypes.string
-  },
-
-  getDefaultProps () {
-    return {
-      ingredients: 0,
-      steps: 0,
-      title: '[recipe]'
-    }
-  },
-
+export class Summary extends Component {
   render () {
     const {ingredients, steps, title} = this.props;
     return (
@@ -28,4 +13,16 @@ export const Summary = createClass({
       </div>
     );
   }
-});
+}
+
+Summary.propTypes = {
+  ingredients: PropTypes.number.isRequired,
+  steps: PropTypes.number.isRequired,
+  title: PropTypes.string
+}
+
+Summary.defaultProps = {
+  ingredients: 0,
+  steps: 0,
+  title: '[recipe]'
+}
