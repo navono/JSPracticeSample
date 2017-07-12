@@ -7,7 +7,7 @@ const PORT = 9999;
 
 module.exports = {
   devtool: 'source-map',
-  entry: path.resolve(__dirname, './react/components/StarRating/index.js'),
+  entry: path.resolve(__dirname, './react/components/colorOrganizer/index.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './build')
@@ -38,11 +38,11 @@ module.exports = {
     new OpenBrowserPlugin({
       url: `http:\\localhost:${PORT}`
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      warnings: false,
-      mangle: true
-    })
+    // new webpack.optimize.UglifyJsPlugin({
+    //   sourceMap: true,
+    //   warnings: false,
+    //   mangle: true
+    // })
   ],
   devServer: {
     historyApiFallback: true,

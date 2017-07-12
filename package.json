@@ -39,6 +39,7 @@
     "react": "^15.6.1",
     "react-addons": "^0.9.1-deprecated",
     "style-loader": "^0.18.2",
+    "uuid": "^3.1.0",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },

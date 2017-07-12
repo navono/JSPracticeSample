@@ -26,6 +26,7 @@ module.exports = {
             "error",
             "single"
         ],
+        "no-console": "off",
         "no-unused-vars": 1,
         "indent": [
             "error",
