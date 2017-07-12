@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/navono/JSPracticeSample#readme",
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
     "gulp": "^3.9.1",
     "gulp-uglify": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",

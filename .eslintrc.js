@@ -1,10 +1,12 @@
 module.exports = {
-    "extends": "standard",
+    "extends": "eslint:recommended",
+    parser: 'babel-eslint',
     "plugins": [
         "standard",
         "promise",
         "html",
-        "react"
+        "react",
+        "babel"
     ],
     "env": {
         "browser": true,
