@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import { PureStarRating } from '../StarRating/StarRating';
+import './stylesheets/Color.scss';
 
 const Color = ({title, color, rating = 0, onRemove = f => f, onRate = f => f}) =>
   <section className="color">

@@ -5,6 +5,7 @@ import { v4 } from 'uuid';
 
 import AddColorForm from './AddColorForm';
 import ColorList from './ColorList'
+import './stylesheets/index.scss'
 
 class ColorOrganizer extends Component {
   constructor(props) {
