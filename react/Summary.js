@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 // CLASS STATIC PROPERTIES
 
+// 改成默认值，对于外界传入不同类型的值，也会失去属性验证
+// 因此，如果需要属性验证，最好还是用PropTypes
 const Summary = ({title = '[recipe]', ingredients = 0, steps = 0}) => {
-  console.log('Summary');
   return (
     <div>
       <h1>{title}</h1>
@@ -14,17 +15,5 @@ const Summary = ({title = '[recipe]', ingredients = 0, steps = 0}) => {
     </div>
   );
 }
-
-// Summary.propTypes = {
-//   ingredients: PropTypes.number.isRequired,
-//   steps: PropTypes.number.isRequired,
-//   title: PropTypes.string
-// }
-
-// Summary.defaultProps = {
-//   ingredients: 0,
-//   steps: 0,
-//   title: '[recipe]'
-// }
 
 export default Summary;
