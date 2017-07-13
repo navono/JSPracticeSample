@@ -14,6 +14,13 @@ module.exports = {
         // "commonjs": true,
         // "jquery": true
     },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
     // "ecmaFeatures": {
     //     "modules": true
     // },

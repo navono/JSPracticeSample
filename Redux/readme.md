@@ -32,3 +32,11 @@ Redux就重要的概念是：使用一个全局的 store 来管理所有的 stat
 在此示例中， reducer 树分为两类：操作类和排序类。
 操作类包括ADD，RATE等
 排序类则是SORT。
+
+***
+在 Redux 中，使用 createStore 来创建唯一的 store ，同时使用 combineReducers 来合并所有的 reducer 到一个 reducer ，然后将这个 reducer 应用到 state 树中。
+
+唯一能改变 state 的操作是通过 store 来调度 action ，从而触发改变 state 。
+
+***
+store 传入子组件，可以通过 props ，也可以通过 Context ，最后一个就是通过 Container 

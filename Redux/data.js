@@ -1,4 +1,4 @@
-let colors = {
+export const initialState = {
   colors: [
     {
       'id': '8658c1d0-9eda-4a90-95e1-8001e8eb6036',
