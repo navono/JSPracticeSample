@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-07-06 14:20:04
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-07-10 08:45:01
+ * @Last Modified time: 2017-07-25 16:18:32
  * @Description
  * 演示FP的一些例子。在Node下执行
  */
@@ -96,4 +96,81 @@ let print = function (x) {
 let cat = R.compose(R.map(print), readFile);
 let catFirstChar = R.compose(R.join, R.map(R.head), cat);
 
-console.log(catFirstChar('./test.txt'));
+// console.log(catFirstChar('./test.txt'));
+
+
+let filters = [
+      {
+        "name": "所有报警",
+        "filterKey": "",
+        "filterValue": "",
+        "icon": "ContentInbox",
+        "subItems": []
+      },
+      {
+        "name": "优先级",
+        "filterKey": "",
+        "filterValue": "",
+        "icon": "ActionGrade",
+        "subItems": [
+          {"name": "优先级0", "filterKey": "priority", "filterValue": "0", "icon": "ActionGrade", "subItems": []},
+          {"name": "优先级31", "filterKey": "priority", "filterValue": "31", "icon": "ActionGrade", "subItems": []}
+        ]
+      },
+      {
+        "name": "设备",
+        "filterKey": "",
+        "filterValue": "",
+        "icon": "ActionGrade",
+        "subItems": [
+          {"name": "设备A", "filterKey": "device", "filterValue": "A", "icon": "ActionGrade", "subItems": []},
+          {"name": "设备B", "filterKey": "device", "filterValue": "B", "icon": "ActionGrade", "subItems": []}
+        ]
+      }
+    ];
+
+let alarms = [
+      {"tagName": "AA", "newtime": "2017/6/15 12:00:03", "acktime": "", "sleeptime": "", "almType": "H", "tagDesc": "This is AA description",
+        "device": "B", "priority": 0, "acked": true, "selected": false},
+      {"tagName": "BB", "newtime": "2017/6/15 12:01:14", "acktime": "", "sleeptime": "", "almType": "LL", "tagDesc": "This is BB description",
+        "device": "A", "priority": 0, "acked": false, "selected": false},
+      {"tagName": "CC", "newtime": "2017/6/15 12:05:23", "acktime": "", "sleeptime": "", "almType": "HH", "tagDesc": "This is CC description",
+        "device": "B", "priority": 0, "acked": false, "selected": false},
+      {"tagName": "DD", "newtime": "2017/6/15 12:10:35", "acktime": "", "sleeptime": "", "almType": "L", "tagDesc": "This is DD description",
+        "device": "A", "priority": 0, "acked": false, "selected": false},
+      {"tagName": "EE", "newtime": "2017/6/15 12:20:03", "acktime": "", "sleeptime": "", "almType": "HH", "tagDesc": "This is EE description",
+        "device": "B", "priority": 31, "acked": false, "selected": false},
+      {"tagName": "FF", "newtime": "2017/6/15 12:30:45", "acktime": "", "sleeptime": "", "almType": "LL", "tagDesc": "This is FF description",
+        "device": "A", "priority": 31, "acked": false, "selected": false},
+      {"tagName": "GG", "newtime": "2017/6/15 12:45:00", "acktime": "", "sleeptime": "", "almType": "H", "tagDesc": "This is GG description",
+        "device": "B", "priority": 31, "acked": false, "selected": false},
+      {"tagName": "HH", "newtime": "2017/6/15 13:03:03", "acktime": "", "sleeptime": "", "almType": "HH", "tagDesc": "This is HH description",
+        "device": "A", "priority": 31, "acked": false, "selected": false},
+      {"tagName": "II", "newtime": "2017/6/15 13:05:56", "acktime": "", "sleeptime": "", "almType": "L", "tagDesc": "This is II description",
+        "device": "B", "priority": 31, "acked": false, "selected": false}
+    ];
+let currentFilter = {
+      "filterKey": "priority",
+      "filterValue": 0
+    };
+
+let filterPair = R.propEq(currentFilter.filterKey, currentFilter.filterValue);
+// console.log(R.filter(filterPair, alarms));
+
+
+const isEven = n => n % 2 === 0;
+let f = R.filter(isEven); //=> {b: 2, d: 4}
+// R.compose(R.map(console.log), R.pluck('e'))([{a: 1, b: 2, c: 3, d: 4, e: { f: 6}}]);
+
+let m = v => { return {"filterKey": v.filterKey, "filterValue": v.filterValue}};
+// R.compose(R.map(console.log), R.map(m))(filters);
+
+let fp = R.path(['subItems']);
+// R.compose(console.log, R.map(fp))(filters);
+
+
+var gt10 = x => x > 10;
+var even = x => x % 2 === 0;
+var ef = R.either(gt10, even);
+R.compose(console.log, ef)(101); //=> true
+R.compose(console.log, ef)(8); //=> true
