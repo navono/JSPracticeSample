@@ -24,6 +24,25 @@ const article = new schema.Entity(
 const normalizedData = normalize(data, article);
 console.log(normalizedData);
 
+function changeAgeAndRef(person) {
+  person.age = 27;
+  person = {
+    name: 'John',
+    age: 50
+  };
+
+  return person;
+}
+
+let person1 = {
+  name: 'ping',
+  age: 21
+}
+
+let person2 = changeAgeAndRef(person1);
+console.log(person1);
+console.log(person2);
+
 // {
 //   result: "123",
 //   entities: {
