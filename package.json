@@ -28,6 +28,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.4",
     "d3": "^4.9.1",
+    "echarts": "^3.6.2",
     "eslint": "^4.2.0",
     "eslint-plugin-react": "^7.1.0",
     "events": "^1.1.1",
