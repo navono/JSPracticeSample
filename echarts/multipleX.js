@@ -51,6 +51,8 @@ let option = {
           }
         }
       }
+      // x轴显示的方位
+      // position: 'top'
     },
     {
       type: 'category',
@@ -63,6 +65,11 @@ let option = {
     axisLabel: {
       formatter: '{value} °C'
     }
+    // 在哪个grid
+    // gridIndex: 1
+
+    // Y轴翻转
+    // inverse: true
   },
   dataZoom: [
     {
@@ -84,6 +91,20 @@ let option = {
       type: 'inside',
       yAxisIndex: 0,
       filterMode: 'empty'
+    }
+  ],
+  // 多幅图形
+  grid: [
+    {
+      left: 50,
+      right: 50,
+      height: '35%'
+    },
+    {
+      left: 50,
+      right: 50,
+      top: '55%',
+      height: '35%'
     }
   ],
   series: [
