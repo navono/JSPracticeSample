@@ -8,7 +8,7 @@ const PORT = 9999;
 module.exports = {
   devtool: 'source-map',
   // entry: path.resolve(__dirname, './react/components/HOC/index.js'),
-  entry: path.resolve(__dirname, './echarts/echartsDemo.js'),
+  entry: path.resolve(__dirname, './echarts/multipleX.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './build')
