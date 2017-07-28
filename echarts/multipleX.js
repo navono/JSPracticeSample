@@ -4,8 +4,8 @@ let myChart = echarts.init(document.getElementById('root'));
 let colors = ['#5793f3', '#d14a61', '#675bba'];
 let option = {
   title: {
-    text: "一周气温变化",
-    subtext: "虚构"
+    text: '一周气温变化',
+    subtext: '虚构'
   },
   color: colors,
   tooltip: {
@@ -144,9 +144,9 @@ let option = {
           {type: 'average', name: '平均值'},
           [
             {
-            symbol: 'none',
-            x: '90%',
-            yAxis: 'max'
+              symbol: 'none',
+              x: '90%',
+              yAxis: 'max'
             },
             {
               symbol: 'circle',
