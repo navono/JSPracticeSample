@@ -68,7 +68,7 @@ let option = {
     // 在哪个grid
     // gridIndex: 1
 
-    // Y轴翻转
+    // Y轴翻转，从顶往下显示
     // inverse: true
   },
   dataZoom: [
@@ -130,6 +130,10 @@ let option = {
       name: '最低气温',
       type: 'line',
       data: [1, -2, 2, 7, -5, 3, 4, 6, 0],
+      
+      // 配合多 yAxis 使用
+      // yAxisIndex:1,
+
       markPoint: {
         data: [
           {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
