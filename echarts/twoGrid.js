@@ -145,37 +145,71 @@ let option = {
       inverse: true
     }
   ],
-  visualMap: {
-    top: 20,
-    right: 10,
-    pieces: [{
-      gt: 0,
-      lte: 50,
-      color: '#096'
-    }, {
-      gt: 50,
-      lte: 100,
-      color: '#ffde33'
-    }, {
-      gt: 100,
-      lte: 150,
-      color: '#ff9933'
-    }, {
-      gt: 150,
-      lte: 200,
-      color: '#cc0033'
-    }, {
-      gt: 200,
-      lte: 300,
-      color: '#660099'
-    }, {
-      gt: 300,
-      color: '#7e0023'
-    }],
-    outOfRange: {
-      color: '#999'
+  visualMap: [
+    {
+      // 针对Series中的数据进行分段显示
+      seriesIndex: 0,
+      top: 20,
+      right: -10,
+      pieces: [{
+        gt: 0,
+        lte: 50,
+        color: '#096'
+      }, {
+        gt: 50,
+        lte: 100,
+        color: '#ffde33'
+      }, {
+        gt: 100,
+        lte: 150,
+        color: '#ff9933'
+      }, {
+        gt: 150,
+        lte: 200,
+        color: '#cc0033'
+      }, {
+        gt: 200,
+        lte: 300,
+        color: '#660099'
+      }, {
+        gt: 300,
+        color: '#7e0023'
+      }],
+      outOfRange: {
+        color: '#999'
+      }
+    },
+    {
+      seriesIndex: 1,
+      top: '55%',
+      right: -10,
+      pieces: [
+        {
+          gt: 0,
+          lte: 2,
+          color: '#096'
+        }, {
+          gt: 2,
+          lte: 4,
+          color: '#ffde33'
+        }, {
+          gt: 4,
+          lte: 6,
+          color: '#ff9933'
+        }, {
+          gt: 6,
+          lte: 8,
+          color: '#cc0033'
+        }, {
+          gt: 8,
+          color: '#7e0023'
+        }
+      ],
+      outOfRange: {
+        color: '#999'
+      }
     }
-  },
+  ],
   series : [
     // {
     //   name:'流量',
