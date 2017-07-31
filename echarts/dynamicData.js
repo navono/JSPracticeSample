@@ -1,0 +1,90 @@
+import echarts from 'echarts';
+
+let myChart = echarts.init(document.getElementById('root'));
+
+let now = +new Date(2010, 10, 10);
+let value = Math.random() * 1000;
+const oneSecond = 1000 * 60;
+
+let data = [];
+
+// 初始化
+for (let index = 0; index < 500; index++) {
+  data.push(randomData());
+}
+
+function randomData() {
+  now = new Date(+now + oneSecond);
+  value = value + Math.random() * 21 - 10;
+  return {
+    name: now.toString(),
+    value: [
+      now,
+      Math.round(value)
+    ]
+  }
+}
+
+let option = {
+  title: {
+    text: '动态数据 + 时间坐标轴'
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: function (params) {
+      params = params[0];
+      var date = new Date(params.name);
+      // return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+      return date.toLocaleString() + ' : ' + params.value[1];
+    },
+    axisPointer: {
+      animation: false
+    }
+  },
+  xAxis: {
+    type: 'time',
+    splitLine: {
+      show: false
+    },
+    axisLabel: {
+      interval: 20,
+      show: true
+    },
+    // axisLine: {show: false},
+    splitNumber: 3,
+    // boundaryGap: ['20%', '20%']
+  },
+  yAxis: {
+    type: 'value',
+    boundaryGap: [0, '100%'],
+    splitLine: {
+      show: false
+    }
+  },
+  series: [{
+    name: '模拟数据',
+    type: 'line',
+    showSymbol: false,
+    hoverAnimation: false,
+    data: data
+  }]
+}
+
+setInterval(() => {
+  //for (let i = 0; i < 1; i++) {
+  // data.shift();
+  // data.push(randomData());
+  //}
+
+  data.shift();
+  data.push(randomData());
+
+  myChart.setOption({
+    series: [
+      {data}
+    ]
+  });
+
+}, 1000);
+
+myChart.setOption(option);
