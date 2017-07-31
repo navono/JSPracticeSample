@@ -9,7 +9,9 @@ const oneSecond = 1000 * 60;
 let data = [];
 
 // 初始化
-for (let index = 0; index < 500; index++) {
+// 原有的 data 的大小，决定了在时间轴上的数据量的大小，也就是间隔大小
+// 如：目前的跳变精度为 1 秒，那么设置为 60 时，即想要在时间轴上保持 1 分钟的数据。
+for (let index = 0; index < 60; index++) {
   data.push(randomData());
 }
 
@@ -41,6 +43,18 @@ let option = {
       animation: false
     }
   },
+  dataZoom: [
+    {
+      type: 'slider',
+      xAxisIndex: 0,
+      filterMode: 'empty'
+    },
+    {
+      type: 'inside',
+      xAxisIndex: 0,
+      filterMode: 'empty'
+    }
+  ],
   xAxis: {
     type: 'time',
     splitLine: {
