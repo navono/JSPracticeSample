@@ -72,6 +72,28 @@ let option = {
     trigger: 'axis',
     axisPointer: {
       animation: false
+    },
+    formatter: function (params) {
+      let time = params[0].axisValue;
+
+      let colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+      
+      let data1 = params[0];
+      let data2 = params[1];
+
+      let rez = '';
+      params.forEach(item => {
+        let num = item.value;
+        let name = item.seriesName;
+        let strItem = '<p>' + colorSpan(item.color) + name + ' ' + num + '</p>';
+        rez += strItem;
+      });
+      //https://github.com/ecomfe/echarts/commit/86bcb9a87bcc568d7ef6427aba45ec105f0d0bee
+      // return rez;
+
+      let normalCotent = time + '<br />' + rez + '<bar />';
+      let sub = '差值：' + (data2.value - data1.value);
+      return normalCotent + sub;
     }
   },
   legend: {
