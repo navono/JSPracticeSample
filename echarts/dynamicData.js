@@ -5,7 +5,7 @@ let myChart = echarts.init(document.getElementById('root'));
 
 let now = +Date.now();
 // let value = Math.random() * 1000;
-const oneSecond = 1000 * 60;
+const oneSecond = 1000;
 
 const socket = io('http://localhost:3000');
 
@@ -25,7 +25,7 @@ function randomData(time, lower, upper) {
   const diff = upper - lower + 1;
   const value =  Math.floor(Math.random() * diff + lower);
   return {
-    name: now.toString(),
+    name: time.toString(),
     value: [
       time,
       value
@@ -106,6 +106,7 @@ let option = {
       name: '开关量数据',
       yAxisIndex: 1,
       type: 'line',
+      step: true,
       showSymbol: false,
       hoverAnimation: false,
       data: digitalData
