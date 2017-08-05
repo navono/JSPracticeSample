@@ -128,16 +128,18 @@ let option = {
       xAxisIndex: [0, 1]
     }
   ],
-  grid: [{
-    left: 50,
-    right: 50,
-    height: '35%'
-  }, {
-    left: 50,
-    right: 50,
-    top: '55%',
-    height: '35%'
-  }],
+  grid: [
+    {
+      left: 50,
+      right: 50,
+      height: '35%'
+    }, {
+      left: 50,
+      right: 50,
+      top: '55%',
+      height: '35%'
+    }
+  ],
   xAxis : [
     {
       type : 'category',
