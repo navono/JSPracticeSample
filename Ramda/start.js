@@ -51,5 +51,54 @@ const operate = R.compose(
 
 // 有个用法是，定义函数的时候，使用 pipe，调用函数的时候，使用 compose
  
-R.compose(out, operate)(3, 4) ;
+// R.compose(out, operate)(3, 4) ;
 
+// const forever21 = age => R.ifElse(R.gte(R.__, 21), R.always(21), R.inc)(age);
+const forever21 = R.ifElse(R.gte(R.__, 21), R.always(21), R.inc);
+// R.compose(out, forever21)(22) ;
+
+
+// 属性转换
+
+let person = {
+  age: 11
+}
+
+// e.g. 更新年龄
+const nextAge = R.compose(R.inc, R.prop('age'))
+const celebrateBirthday = person => R.assoc('age', nextAge(person), person)
+
+// 更简洁的方式
+const celebrateBirthday2 = R.evolve({ age: R.inc });
+
+// R.compose(out, celebrateBirthday)(person) ;
+// R.compose(out, celebrateBirthday2)(person) 
+
+const numbers = [10, 20, 30, 40, 50, 60];
+// R.compose(out, R.flip(R.concat)([70, 80]), R.slice(2, 5))(numbers);
+
+
+const account = {
+  name: 'Randy',
+  socialMedia: {
+    github: 'randycoulman',
+    twitter: '@randycoulman',
+    data: [1, 2, 3, 4 ]
+  }
+}
+
+// 透镜
+// const nameLens = R.lens(R.prop('name'), R.assoc('name'));
+// or
+const nameLens = R.lensProp('name');
+
+// const twitterLens = R.lens(
+//   R.path(['socialMedia', 'twitter']),
+//   R.assocPath(['socialMedia', 'twitter'])
+// );
+// or
+const twitterLens = R.lensPath(['socialMedia', 'twitter']);
+const dataLens = R.lensPath(['socialMedia', 'data'])
+
+R.compose(out, R.view(nameLens))(account);
+R.compose(out, R.set(dataLens, [8, 9]))(account);

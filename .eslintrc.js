@@ -1,12 +1,16 @@
 module.exports = {
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended"
+    ],
     parser: 'babel-eslint',
     "plugins": [
         "standard",
         "promise",
         "html",
         "react",
-        "babel"
+        "babel",
+        "node"
     ],
     "env": {
         "browser": true,
@@ -25,6 +29,7 @@ module.exports = {
     //     "modules": true
     // },
     "rules": {
+        "node/exports-style": ["error", "module.exports"],
         //关闭额外的分号检查
         //0:关闭，1:警告，2:异常
         "semi": 0,
