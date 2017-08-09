@@ -6,15 +6,7 @@ function start(route, handle) {
     const pathname = url.parse(req.url).pathname;
     console.log(`Request for ${pathname} received`);
     
-    let postData = '';
-    req.setEncoding('utf8');
-    req.addListener('data', dataChunk => {
-      postData += dataChunk;
-      console.log(`Received POST data chunk: ${dataChunk}`);
-    });
-    req.addListener('end', () => {
-      route(handle, pathname, res, postData);
-    });
+    route(handle, pathname, res, req);
   }).listen(8989);
 
   console.log('Server has started.');
