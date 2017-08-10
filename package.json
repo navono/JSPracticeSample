@@ -1,6 +1,6 @@
 {
   "name": "js-demo",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "This is a javascript practice demo",
   "main": "demo.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/navono/JSPracticeSample.git"
   },
   "keywords": [
-    "Demo"
+    "js Demo"
   ],
   "author": "Ping Qixing",
   "license": "ISC",

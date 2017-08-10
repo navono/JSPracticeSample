@@ -100,5 +100,29 @@ const nameLens = R.lensProp('name');
 const twitterLens = R.lensPath(['socialMedia', 'twitter']);
 const dataLens = R.lensPath(['socialMedia', 'data'])
 
-R.compose(out, R.view(nameLens))(account);
-R.compose(out, R.set(dataLens, [8, 9]))(account);
+// R.compose(out, R.view(nameLens))(account);
+// R.compose(out, R.set(dataLens, [8, 9]))(account);
+
+
+let users = [
+  {
+    name: 'a',
+    age: 12
+  },
+  {
+    name: 'b',
+    age:21
+  },
+  {
+    name: 'c',
+    age: 99
+  }
+]
+
+function IncAge(obj) {
+  let copy = Object.assign([], obj);
+  copy.age += 10;
+  return copy;
+}
+
+R.compose(out, R.adjust(IncAge, 1))(users);

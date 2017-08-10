@@ -10,6 +10,7 @@ function start(route, handle) {
   }).listen(8989);
 
   console.log('Server has started.');
+  console.log(module.paths);
 }
 
 module.exports.start = start;
