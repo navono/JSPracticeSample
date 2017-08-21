@@ -9,8 +9,8 @@ module.exports = {
   devtool: 'source-map',
   // entry: path.resolve(__dirname, './react/components/HOC/index.js'),
   // entry: path.resolve(__dirname, './echarts/twoGrid.js'),
-  entry: path.resolve(__dirname, './ReactInternal/Feact.js'),
-  // entry: path.resolve(__dirname, './echarts/dynamicData.js'),
+  // entry: path.resolve(__dirname, './ReactInternal/Feact.js'),
+  entry: path.resolve(__dirname, './echarts/dynamicData.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './build')
