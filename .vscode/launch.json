@@ -28,7 +28,7 @@
             // 请求类型, launch表示启动程序调试，attach表示监听某一端口进行调试
             "request": "launch",
             // node程序的入口脚本路径(相对于工作空间)
-            "program": "${workspaceRoot}/Nodejs/nodeBeginner/index.js",
+            "program": "${workspaceRoot}/FP/fp.js",
             "stopOnEntry": false,
             // 接在program指定js后面的参数
             "args": [],
@@ -52,7 +52,7 @@
             // "outDir": "./out"
         },
         {
-            "name": "Attach",
+            "name": "node Attach",
             "type": "node",
             // attach表示监听某一端口进行调试
             "request": "attach",
