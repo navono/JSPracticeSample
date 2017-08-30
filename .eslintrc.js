@@ -1,7 +1,7 @@
 module.exports = {
     "extends": [
         "eslint:recommended",
-        "plugin:node/recommended"
+        // "plugin:node/recommended"
     ],
     parser: 'babel-eslint',
     "plugins": [
@@ -15,7 +15,7 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        // "node": true
         // "commonjs": true,
         // "jquery": true
     },

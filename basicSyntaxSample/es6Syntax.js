@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-08-29 16:39:53
+ * @Last Modified time: 2017-08-30 21:25:24
  */
 
 // Arrow function and template string
@@ -343,7 +343,7 @@ let log = console.log.bind(console);
 function Fibonacci (n) {
   if (n <= 1) { return 1 }
 
-    return Fibonacci(n - 1) + Fibonacci(n - 2);
+  return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
 
 // Fibonacci(10) // 89
@@ -354,7 +354,7 @@ function Fibonacci (n) {
 function Fibonacci2 (n, ac1 = 1, ac2 = 1) {
   if (n <= 1) { return ac2 }
 
-    return Fibonacci2(n - 1, ac2, ac1 + ac2);
+  return Fibonacci2(n - 1, ac2, ac1 + ac2);
 }
 
 // Fibonacci2(100) // 573147844013817200000
