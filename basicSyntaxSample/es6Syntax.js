@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-11 10:46:56
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-17 17:06:49
+ * @Last Modified time: 2017-08-29 16:39:53
  */
 
 // Arrow function and template string
@@ -17,58 +17,58 @@ let loardify = firstname => `${firstname} of Canterbury`;
 // console.log(loardify('Ping', 'Qixing'));
 
 let tahoe = {
-    resorts: ['Kirkwood', 'Squaw', 'Alpine', 'Heavenly', 'Northstar'],
+  resorts: ['Kirkwood', 'Squaw', 'Alpine', 'Heavenly', 'Northstar'],
 
-    // because in this case, this means window object
-    print: function (delay = 1000) {
-        setTimeout(function () {
-            console.log(this.resorts.join(','))
-        }, delay);
-    },
+  // because in this case, this means window object
+  print: function (delay = 1000) {
+    setTimeout(function () {
+      console.log(this.resorts.join(','))
+    }, delay);
+  },
 
-    // use arrow function to protect the scope of this
-    print2: function (delay = 1000) {
-        setTimeout(() => {
-            console.log(this.resorts.join(','))
-        }, delay);
-    },
+  // use arrow function to protect the scope of this
+  print2: function (delay = 1000) {
+    setTimeout(() => {
+      console.log(this.resorts.join(','))
+    }, delay);
+  },
 
-    // join not defined.
-    // arrow function do not block off the scope of this
-    print3: (delay = 1000) => {
-        setTimeout(() => {
-            console.log(this.resorts.join(','))
-        }, delay);
-    },
+  // join not defined.
+  // arrow function do not block off the scope of this
+  print3: (delay = 1000) => {
+    setTimeout(() => {
+      console.log(this.resorts.join(','))
+    }, delay);
+  },
 
-    // verify above assumption
-    verifyWithNormaFunc: function (delay = 1000) {
-        setTimeout(function () {
-            console.log(this === window);   // true
-        })
-    },
+  // verify above assumption
+  verifyWithNormaFunc: function (delay = 1000) {
+    setTimeout(function () {
+      console.log(this === window);   // true
+    })
+  },
 
-    verifyWithInnerArrowFunc: function (delay = 1000) {
-        setTimeout(() => {
-            console.log(this === window);   // false
-        })
-    },
+  verifyWithInnerArrowFunc: function (delay = 1000) {
+    setTimeout(() => {
+      console.log(this === window);   // false
+    })
+  },
 
-    verifyWithDoubleArrowFunc: (delay = 1000) => {
-        setTimeout(() => {
-            console.log(this === window);   // true
-        })
-    }
+  verifyWithDoubleArrowFunc: (delay = 1000) => {
+    setTimeout(() => {
+      console.log(this === window);   // true
+    })
+  }
 }
 // test code
 // tahoe.verifyWithDoubleArrowFunc();
 
 // Destructuring Assignment
 let sandwith = {
-    bread: 'dutch crunch',
-    meat: 'tuna',
-    cheese: 'swiss',
-    toppings: ['lettuce', 'tomato', 'mustard']
+  bread: 'dutch crunch',
+  meat: 'tuna',
+  cheese: 'swiss',
+  toppings: ['lettuce', 'tomato', 'mustard']
 }
 
 let {bread, meat} = sandwith;
@@ -83,12 +83,12 @@ meat = 'turkey';
 
 // destructure incoming function arguments
 let loardify2 = ({firstname}) => {
-    console.log(`${firstname} of canterbury`);
+  console.log(`${firstname} of canterbury`);
 }
 
 let regularPerson = {
-    firstname: 'Qixing',
-    lastname: 'Ping'
+  firstname: 'Qixing',
+  lastname: 'Ping'
 }
 
 // loardify2(regularPerson);
@@ -105,7 +105,7 @@ let funHike = {name, elevation};
 // console.log(funHike);
 
 let print4 = function () {
-    console.log(`Mt. ${this.name} is ${this.elevation} feet tall`)
+  console.log(`Mt. ${this.name} is ${this.elevation} feet tall`)
 };
 let funHike2 = {name, elevation, print4}
 
@@ -131,16 +131,16 @@ let sound = 'no';
 // making the function keyword unnecessary
 
 const skier = {
-    name,
-    sound,
-    powderYell () {
-        let yell = this.sound.toUpperCase()
-        console.log(`${yell} ${yell} ${yell}!!!`)
-    },
-    speed (mph) {
-        this.speed = mph
-        console.log('speed:', mph)
-    }
+  name,
+  sound,
+  powderYell () {
+    let yell = this.sound.toUpperCase()
+    console.log(`${yell} ${yell} ${yell}!!!`)
+  },
+  speed (mph) {
+    this.speed = mph
+    console.log('speed:', mph)
+  }
 }
 
 // Spread Operator
@@ -164,13 +164,13 @@ let [first, ...rest] = lakes;
 
 // use spread operator for function args
 function directions (...args) {
-    let [start, ...remainin] = args;
-    let [finish, ...stops] = remainin.reverse();
+  let [start, ...remainin] = args;
+  let [finish, ...stops] = remainin.reverse();
 
-    console.log(`drive through ${args.length} towns`)
-    console.log(`start in ${start}`)
-    console.log(`the destination is ${finish}`)
-    console.log(`stopping ${stops.length} times in between`)
+  console.log(`drive through ${args.length} towns`)
+  console.log(`start in ${start}`)
+  console.log(`the destination is ${finish}`)
+  console.log(`stopping ${stops.length} times in between`)
 }
 
 // directions(
@@ -182,14 +182,14 @@ function directions (...args) {
 // )
 
 let morning = {
-    breakfast: 'oatmeal',
-    lunch: 'peanut butter and jelly'
+  breakfast: 'oatmeal',
+  lunch: 'peanut butter and jelly'
 }
 let dinner = 'mac and cheese';
 
 let backpackingMeals = {
-    // ...morning,      // ES2017
-    dinner
+  // ...morning,      // ES2017
+  dinner
 }
 
 // console.log(backpackingMeals);
@@ -197,12 +197,12 @@ let backpackingMeals = {
 // Promises
 var promise = new Promise(function (resolve, reject) {
   // do a thing, possibly async, then…
-    let a = 2;
-    if (a !== 1) {
-        resolve('Stuff worked!');
-    } else {
-        reject(Error('It broke'));
-    }
+  let a = 2;
+  if (a !== 1) {
+    resolve('Stuff worked!');
+  } else {
+    reject(Error('It broke'));
+  }
 });
 
 // promise.then(
@@ -215,16 +215,16 @@ var promise = new Promise(function (resolve, reject) {
 // })
 
 const getFakeMembers = count => new Promise((resolve, reject) => {
-    const api = `http://api.randomuser.me/?nat=US&results=${count}`;
-    const request = new XMLHttpRequest();
-    request.open('GET', api);
-    request.onload = () =>
-        (request.status === 200)
-        ? resolve(JSON.parse(request.response).results)
-        : reject(Error(request.statusText));
+  const api = `http://api.randomuser.me/?nat=US&results=${count}`;
+  const request = new XMLHttpRequest();
+  request.open('GET', api);
+  request.onload = () =>
+    (request.status === 200)
+      ? resolve(JSON.parse(request.response).results)
+      : reject(Error(request.statusText));
 
-    request.onerror = (err) => reject(err);
-    request.send();
+  request.onerror = (err) => reject(err);
+  request.send();
 })
 
 // getFakeMembers(10).then(
@@ -234,29 +234,29 @@ const getFakeMembers = count => new Promise((resolve, reject) => {
 
 // Class
 class Vacation {
-    constructor (destination, length) {
-        this.destination = destination;
-        this.length = length;
-    }
+  constructor (destination, length) {
+    this.destination = destination;
+    this.length = length;
+  }
 
-    print () {
-        console.log(`${this.destination} will take ${this.length} days.`);
-    }
+  print () {
+    console.log(`${this.destination} will take ${this.length} days.`);
+  }
 }
 
 // const trip = new Vacation('Santiago, Chile', 7);
 // trip.print();
 
 class Expedition extends Vacation {
-    constructor (destination, length, gear) {
-        super(destination, length);
-        this.gear = gear;
-    }
+  constructor (destination, length, gear) {
+    super(destination, length);
+    this.gear = gear;
+  }
 
-    print () {
-        super.print();
-        console.log(`bring yours ${this.gear.join(' and your ')}`);
-    }
+  print () {
+    super.print();
+    console.log(`bring yours ${this.gear.join(' and your ')}`);
+  }
 }
 
 const trip = new Expedition('Mt. Whitney', 3, ['sunglasses', 'prayer flags', 'camera']);
@@ -265,14 +265,14 @@ const trip = new Expedition('Mt. Whitney', 3, ['sunglasses', 'prayer flags', 'ca
 
 // immutable
 let colorLawn = {
-    title: 'lawn',
-    color: '#0F0',
-    rating: 0
+  title: 'lawn',
+  color: '#0F0',
+  rating: 0
 }
 let rateColor = function (color, rating) {
-    return Object.assign({}, color, {rating: rating});
-    // 类似的还有Array.concat()
-    // 和 [...list, {xxx}]
+  return Object.assign({}, color, {rating: rating});
+  // 类似的还有Array.concat()
+  // 和 [...list, {xxx}]
 }
 
 // ES7
@@ -285,22 +285,22 @@ let rateColor = function (color, rating) {
 // console.log(colorLawn.rating);
 
 let frederick = {
-    name: 'Frederick Douglass',
-    canRead: false,
-    canWrite: false
+  name: 'Frederick Douglass',
+  canRead: false,
+  canWrite: false
 }
 
 // impure
 function selfEducate () {
-    frederick.canRead = true
-    frederick.canWrite = true
-    return frederick
+  frederick.canRead = true
+  frederick.canWrite = true
+  return frederick
 }
 // selfEducate()
 // console.log(frederick);
 
 const pureSelfEducate = person => {
-    return Object.assign({}, person, {canRead: true, canWrite: true});
+  return Object.assign({}, person, {canRead: true, canWrite: true});
 }
 // ES7
 // const pureSelfEducate = person => ({
@@ -313,11 +313,11 @@ const pureSelfEducate = person => {
 // console.log(frederick);
 
 function throwIfMissing () {
-    throw new Error('Missing parameter');
+  throw new Error('Missing parameter');
 }
 
 function foo (mustBeProvided = throwIfMissing()) {
-    return mustBeProvided;
+  return mustBeProvided;
 }
 
 // foo();
@@ -341,7 +341,7 @@ let log = console.log.bind(console);
 
 // 非尾递归
 function Fibonacci (n) {
-    if (n <= 1) { return 1 };
+  if (n <= 1) { return 1 }
 
     return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
@@ -352,7 +352,7 @@ function Fibonacci (n) {
 
 // 尾递归
 function Fibonacci2 (n, ac1 = 1, ac2 = 1) {
-    if (n <= 1) { return ac2 };
+  if (n <= 1) { return ac2 }
 
     return Fibonacci2(n - 1, ac2, ac1 + ac2);
 }
@@ -362,15 +362,15 @@ function Fibonacci2 (n, ac1 = 1, ac2 = 1) {
 // Fibonacci2(10000) // Infinity
 
 function factorial (n) {
-    if (n === 1) return 1;
-    return n * factorial(n - 1);
+  if (n === 1) return 1;
+  return n * factorial(n - 1);
 }
 
 // factorial(5) // 120
 
 function factorialTail (n, total) {
-    if (n === 1) return total;
-    return factorialTail(n - 1, n * total);
+  if (n === 1) return total;
+  return factorialTail(n - 1, n * total);
 }
 
 // factorial(5, 1) // 120
@@ -383,24 +383,24 @@ function factorialTail (n, total) {
 
 // 两个方法可以解决这个问题。方法一是在尾递归函数之外，再提供一个正常形式的函数。
 function tailFactorial (n, total) {
-    if (n === 1) return total;
-    return tailFactorial(n - 1, n * total);
+  if (n === 1) return total;
+  return tailFactorial(n - 1, n * total);
 }
 
 function factorial2 (n) {
-    return tailFactorial(n, 1);
+  return tailFactorial(n, 1);
 }
 
 // 函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。这里也可以使用柯里化。
 function currying (fn, n) {
-    return function (m) {
-        return fn.call(this, m, n);
-    };
+  return function (m) {
+    return fn.call(this, m, n);
+  };
 }
 
 function tailFactorial2 (n, total) {
-    if (n === 1) return total;
-    return tailFactorial2(n - 1, n * total);
+  if (n === 1) return total;
+  return tailFactorial2(n - 1, n * total);
 }
 
 const factorial3 = currying(tailFactorial2, 1);
@@ -409,8 +409,8 @@ const factorial3 = currying(tailFactorial2, 1);
 
 // 第二种方法就简单多了，就是采用 ES6 的函数默认值。
 function factorial4 (n, total = 1) {
-    if (n === 1) return total;
-    return factorial(n - 1, n * total);
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
 }
 
 // factorial4(5) // 120
@@ -424,48 +424,48 @@ function factorial4 (n, total = 1) {
 
 // 正常递归版
 function sum (x, y) {
-    if (y > 0) {
-        return sum(x + 1, y - 1);
-    } else {
-        return x;
-    }
+  if (y > 0) {
+    return sum(x + 1, y - 1);
+  } else {
+    return x;
+  }
 }
 
 // 蹦床版
 function trampoline (f) {
-    while (f && f instanceof Function) {
-        f = f();
-    }
-    return f;
+  while (f && f instanceof Function) {
+    f = f();
+  }
+  return f;
 }
 
 function sum2 (x, y) {
-    if (y > 0) {
-        return sum2.bind(null, x + 1, y - 1);
-    } else {
-        return x;
-    }
+  if (y > 0) {
+    return sum2.bind(null, x + 1, y - 1);
+  } else {
+    return x;
+  }
 }
 // trampoline(sum2(1, 100000))
 // 100001
 
 // 蹦床函数并不是真正的尾递归优化，下面的实现才是。
 function tco (f) {
-    let value;
-    let active = false;
-    let accumulated = [];
+  let value;
+  let active = false;
+  let accumulated = [];
 
-    return function accumulator () {
-        accumulated.push(arguments);
-        if (!active) {
-            active = true;
-            while (accumulated.length) {
-                value = f.apply(this, accumulated.shift());
-            }
-            active = false;
-            return value;
-        }
-    };
+  return function accumulator () {
+    accumulated.push(arguments);
+    if (!active) {
+      active = true;
+      while (accumulated.length) {
+        value = f.apply(this, accumulated.shift());
+      }
+      active = false;
+      return value;
+    }
+  };
 }
 
 // tco函数是尾递归优化的实现，它的奥妙就在于状态变量active。默认情况下，这个变量是不激活的。一旦进入尾递归优化的过程，这个变量就激活了。
@@ -474,25 +474,25 @@ function tco (f) {
 // 而后一轮的参数会取代前一轮的参数，保证了调用栈只有一层
 
 var sum3 = tco(function (x, y) {
-    if (y > 0) {
-        return sum3(x + 1, y - 1)
-    } else {
-        return x
-    }
+  if (y > 0) {
+    return sum3(x + 1, y - 1)
+  } else {
+    return x
+  }
 });
 
 // sum3(1, 3);
 
 // Proxy
 let obj = new Proxy({}, {
-    get: function (target, key, receiver) {
-        console.log(`getting ${key}!`);
-        return Reflect.get(target, key, receiver);
-    },
-    set: function (target, key, value, receiver) {
-        console.log(`setting ${key}!`);
-        return Reflect.set(target, key, value, receiver);
-    }
+  get: function (target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function (target, key, value, receiver) {
+    console.log(`setting ${key}!`);
+    return Reflect.set(target, key, value, receiver);
+  }
 });
 
 obj.count = 1;
