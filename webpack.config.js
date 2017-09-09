@@ -11,7 +11,7 @@ module.exports = {
   // entry: path.resolve(__dirname, './echarts/twoGrid.js'),
   // entry: path.resolve(__dirname, './ReactInternal/Feact.js'),
   // entry: path.resolve(__dirname, './echarts/dynamicData.js'),
-  entry: path.resolve(__dirname, './basicSyntaxSample/Understanding-ES6/SetMap.js'),
+  entry: path.resolve(__dirname, './basicSyntaxSample/Understanding-ES6/IteratorsGenerator.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './build')
