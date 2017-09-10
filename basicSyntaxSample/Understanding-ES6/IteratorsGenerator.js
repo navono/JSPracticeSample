@@ -57,7 +57,7 @@ let createGenerator2 = function*(items) {
 // 可迭代类型是指那些包含 Symbol.iterator 属性的对象
 
 let values = [1, 2, 3];
-for (let num of values)       {
+for (let num of values) {
   console.log(num);
 }
 // 0, 1, 2
@@ -68,7 +68,7 @@ for (let num of values)       {
 // console.log(iter.next());
 
 function isIterable(object) {
-  return typeof object[Symbol.iterator] === 'function';
+  return typeof object[Symbol.iterator] === "function";
 }
 
 //**************************************************************************** */
@@ -99,8 +99,8 @@ function* createNumberIterator() {
 }
 
 function* createColorIterator() {
-  yield 'red';
-  yield 'green';
+  yield "red";
+  yield "green";
 }
 
 function* createCombinedIterator() {
@@ -130,7 +130,7 @@ function run(taskDef) {
       // result = task.next();
       // result = task.next(result.value);
 
-      if (typeof result.value === 'function') {
+      if (typeof result.value === "function") {
         result.value((err, data) => {
           if (err) {
             result = task.throw(err);
@@ -153,10 +153,10 @@ function run(taskDef) {
 
 // 例子
 run(function*() {
-  console.log('start mission');
+  console.log("start mission");
   yield;
-  console.log('kill the boss');
+  console.log("kill the boss");
   yield;
-  console.log('mission completed');
+  console.log("mission completed");
   yield;
 });
