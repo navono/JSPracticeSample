@@ -2,6 +2,7 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         // "plugin:node/recommended"
+        "prettier"
     ],
     parser: 'babel-eslint',
     "plugins": [
@@ -10,7 +11,8 @@ module.exports = {
         "html",
         "react",
         "babel",
-        "node"
+        "node",
+        "prettier"
     ],
     "env": {
         "browser": true,
