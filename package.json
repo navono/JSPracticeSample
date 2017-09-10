@@ -6,15 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --progress --profile --colors",
-    "start": "webpack-dev-server --env=dev --inline --progress --profile --colors"
+    "start":
+      "webpack-dev-server --env=dev --inline --progress --profile --colors",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js[x]": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/navono/JSPracticeSample.git"
   },
-  "keywords": [
-    "js Demo"
-  ],
+  "keywords": ["js Demo"],
   "author": "Ping Qixing",
   "license": "ISC",
   "bugs": {
@@ -39,7 +42,9 @@
     "gulp": "^3.9.1",
     "gulp-uglify": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1",
+    "lint-staged": "^4.1.3",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
     "normalizr": "^3.2.3",

@@ -57,7 +57,7 @@ let createGenerator2 = function*(items) {
 // 可迭代类型是指那些包含 Symbol.iterator 属性的对象
 
 let values = [1, 2, 3];
-for (let num of values) {
+for (let num of values)       {
   console.log(num);
 }
 // 0, 1, 2
