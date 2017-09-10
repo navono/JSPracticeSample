@@ -5,7 +5,7 @@ set.foo = true;
 
 // 检查属性是否存在
 if (set.foo) {
-	console.log('set.foo exist');
+  console.log('set.foo exist');
 }
 
 let map = Object.create(null);
@@ -15,7 +15,7 @@ console.log(map.foo); // bar
 
 // 问题
 let key1 = {},
-	key2 = {};
+  key2 = {};
 map[key1] = 'foo';
 
 console.log(map[key2]);
@@ -33,21 +33,21 @@ console.log(set2.size); // 2
 
 let set3 = new Set([1, 2]);
 set3.forEach(function(value, key, ownerSet) {
-	console.log(key + ' ' + value);
-	console.log(ownerSet === set3);
+  console.log(key + ' ' + value);
+  console.log(ownerSet === set3);
 });
 
 let processor = {
-	output(value) {
-		console.log(value);
-	},
-	process(dataSet) {
-		// dataSet.forEach(function(value) {
-		//   this.output(value);
-		// }, this);
+  output(value) {
+    console.log(value);
+  },
+  process(dataSet) {
+    // dataSet.forEach(function(value) {
+    //   this.output(value);
+    // }, this);
 
-		dataSet.forEach(value => this.output(value));
-	}
+    dataSet.forEach(value => this.output(value));
+  }
 };
 
 processor.process(set3);
@@ -58,11 +58,11 @@ console.log(array);
 
 // 消除重复
 function eliminateDuplicates(items) {
-	return [...new Set(items)];
+  return [...new Set(items)];
 }
 
 let numbers = [3, 3, 3, 4, 5, 1, 2],
-	noDuplicates = eliminateDuplicates(numbers);
+  noDuplicates = eliminateDuplicates(numbers);
 
 console.log(noDuplicates); // [1,2,3,4,5]
 

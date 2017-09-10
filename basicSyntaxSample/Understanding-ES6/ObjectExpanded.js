@@ -10,15 +10,15 @@ console.log(Object.is(NaN, NaN)); // true
 // Object.assign()
 let receiver = {};
 Object.assign(
-	receiver,
-	{
-		type: 'js',
-		name: 'file.js'
-	},
-	// 会覆盖前面的
-	{
-		type: 'css'
-	}
+  receiver,
+  {
+    type: 'js',
+    name: 'file.js'
+  },
+  // 会覆盖前面的
+  {
+    type: 'css'
+  }
 );
 
 // console.log(receiver.type);
@@ -27,11 +27,11 @@ Object.assign(
 // 当 supplier 有访问器属性（accessor properties）时，Object.assign不会在 receiver 创建
 // 访问器属性
 let receiver2 = {},
-	supplier = {
-		get name() {
-			return 'file.js';
-		}
-	};
+  supplier = {
+    get name() {
+      return 'file.js';
+    }
+  };
 Object.assign(receiver2, supplier);
 const descriptor = Object.getOwnPropertyDescriptor(receiver2, 'name');
 
@@ -41,8 +41,8 @@ console.log(descriptor.get); // undefined
 //**************************************************************************** */
 // 复制对象字面量属性
 let author = {
-	name: 'ping',
-	name: 'Qixing'
+  name: 'ping',
+  name: 'Qixing'
 };
 
 console.log(author.name);
@@ -54,12 +54,12 @@ console.log(author.name);
 // 所有的Symbol键以加入到对象的顺序为序
 
 const objPropEnum = {
-	a: 1,
-	0: 1,
-	c: 1,
-	2: 1,
-	b: 1,
-	1: 1
+  a: 1,
+  0: 1,
+  c: 1,
+  2: 1,
+  b: 1,
+  1: 1
 };
 
 objPropEnum.d = 1;
@@ -70,15 +70,15 @@ console.log(Object.getOwnPropertyNames(objPropEnum).join('-')); // 0-1-2-a-c-b-d
 // 1. 改变对象的 prototype
 
 let person = {
-	getGreeting() {
-		return 'Hello';
-	}
+  getGreeting() {
+    return 'Hello';
+  }
 };
 
 let dog = {
-	getGreeting() {
-		return 'Woof';
-	}
+  getGreeting() {
+    return 'Woof';
+  }
 };
 
 let friend = Object.create(person);
@@ -93,18 +93,18 @@ Object.setPrototypeOf(friend, dog);
 // 使用 super 引用访问 prototype
 
 let friend2 = {
-	getGreeting() {
-		// return Object.getPrototypeOf(this).getGreeting.call(this) + ', hi!';
+  getGreeting() {
+    // return Object.getPrototypeOf(this).getGreeting.call(this) + ', hi!';
 
-		// super 只是一个指向当前对象的 prototype 的指针，也就是Object.getPrototypeOf(this) 的值。
-		// 在简明方法外使用 super 都会导致语法错误，见 getGreeting2
-		return super.getGreeting() + ', hi!';
-	}
+    // super 只是一个指向当前对象的 prototype 的指针，也就是Object.getPrototypeOf(this) 的值。
+    // 在简明方法外使用 super 都会导致语法错误，见 getGreeting2
+    return super.getGreeting() + ', hi!';
+  }
 
-	// 命名属性，因此不能访问 super
-	// getGreeting2: function () {
-	//   return super.getGreeting() + ', hi!';
-	// }
+  // 命名属性，因此不能访问 super
+  // getGreeting2: function () {
+  //   return super.getGreeting() + ', hi!';
+  // }
 };
 
 Object.setPrototypeOf(friend2, person);
@@ -117,20 +117,20 @@ Object.setPrototypeOf(friend2, dog);
 
 // 在一些场合下， Object.getPrototypeOf并不适用
 let animal = {
-	name() {
-		return "I'm animal";
-	}
+  name() {
+    return "I'm animal";
+  }
 };
 
 let cat = {
-	name() {
-		// relative 的 prototype 是cat，调用cat的下面方法后会造成递归
-		// return Object.getPrototypeOf(this).name.call(this) + ', hi!';
+  name() {
+    // relative 的 prototype 是cat，调用cat的下面方法后会造成递归
+    // return Object.getPrototypeOf(this).name.call(this) + ', hi!';
 
-		// 而 super 可以解决此问题。因为 super 不是动态的。这里的 super 只会指向
-		// animal
-		return super.name() + ', hi!';
-	}
+    // 而 super 可以解决此问题。因为 super 不是动态的。这里的 super 只会指向
+    // animal
+    return super.name() + ', hi!';
+  }
 };
 Object.setPrototypeOf(cat, animal);
 
@@ -149,13 +149,13 @@ console.log(relative.name()); // error
 // ES6正式定义了方法，是一个内部包含了[[HomeObject]]属性的函数
 
 let person2 = {
-	// method
-	getGreeting() {
-		return 'Hello';
-	}
+  // method
+  getGreeting() {
+    return 'Hello';
+  }
 };
 
 // not a method
 function shareGreeting() {
-	return 'Hi!';
+  return 'Hi!';
 }
