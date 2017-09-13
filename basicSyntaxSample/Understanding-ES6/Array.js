@@ -5,7 +5,7 @@ console.log(items.length); // 2
 console.log(items[0]); // undefined
 console.log(items[1]); // undefined
 
-items = new Array("2");
+items = new Array('2');
 console.log(items.length); // 1
 console.log(items[0]); // "2"
 
@@ -14,7 +14,7 @@ console.log(items.length); // 2
 console.log(items[0]); // 1
 console.log(items[1]); // 2
 
-items = new Array(3, "2");
+items = new Array(3, '2');
 console.log(items.length); // 2
 console.log(items[0]); // 3
 console.log(items[1]); // "2"
@@ -29,7 +29,7 @@ items2 = Array.of(2);
 console.log(items2.length); // 1
 console.log(items2[0]); // 2
 
-items2 = Array.of("2");
+items2 = Array.of('2');
 console.log(items2.length); // 1
 console.log(items2[0]); // "2"
 
