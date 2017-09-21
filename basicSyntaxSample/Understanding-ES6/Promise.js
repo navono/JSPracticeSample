@@ -48,3 +48,86 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 rejected = Promise.reject(new Error('Explosion!'));
+
+
+//**************************************************************************** */
+// Promise 链
+// 错误捕获
+let p1 = new Promise(function(resolve, reject) {
+  resolve(42);
+});
+
+p1.then(function(value) {
+  console.log(value);
+  return value + 1
+}).then(function(value) {
+  console.log(value);
+  console.log("Finished");
+
+  throw new Error("Boom!");
+}).catch(function(error) {
+  console.log(error.message);     // "Boom!"
+});
+
+
+//**************************************************************************** */
+// 多个Promise
+// Promise.all Promise.race
+
+let p1 = new Promise(function(resolve, reject) {
+  resolve(42);
+});
+
+let p2 = new Promise(function(resolve, reject) {
+  resolve(43);
+});
+
+let p3 = new Promise(function(resolve, reject) {
+  resolve(44);
+});
+
+let p4 = Promise.all([p1, p2, p3]);
+
+p4.then(function(value) {
+  console.log(Array.isArray(value));  // true
+  console.log(value[0]);              // 42
+  console.log(value[1]);              // 43
+  console.log(value[2]);              // 44
+});
+
+
+// reject发生
+let p1 = new Promise(function(resolve, reject) {
+  resolve(42);
+});
+
+let p2 = new Promise(function(resolve, reject) {
+  reject(43);
+});
+
+let p3 = new Promise(function(resolve, reject) {
+  resolve(44);
+});
+
+let p4 = Promise.all([p1, p2, p3]);
+
+p4.catch(function(value) {
+  console.log(Array.isArray(value))   // false
+  console.log(value);                 // 43
+});
+
+
+//**************************************************************************** */
+// 继承
+
+class MyPromise extends Promise {
+  // 使用默认的构造函数
+
+  success(resolve, reject) {
+      return this.then(resolve, reject);
+  }
+
+  failure(reject) {
+      return this.catch(reject);
+  }
+}
